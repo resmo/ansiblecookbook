@@ -1,10 +1,10 @@
 \newpage
 
-## How do I manage root's authorized_keys file with Ansible?
+# How do I manage root's authorized_keys file with Ansible?
 
-### Solution
+## Solution
 
-#### 1. Public git repo containing all the ssh public keys
+###  Public git repo containing all the ssh public keys
 
 We usually create a separate repo for all ssh public keys. So everyone can send pull request for updating their ssh public key. Of course you should verify them. :)
 
@@ -18,11 +18,11 @@ The repo looks like this below:
 └── user4.pub
 ~~~
 
-#### 2. Playbook to get latest ssh public keys
+### Playbook to get latest ssh public keys
 
 To make sure we always use the latest version of this repo. We set up a playbook, in which we checkout the lastest state to our local workstation.
 
-~~~
+~~~yaml
 # filename: sshkeys.yml
 ---
 - hosts: localhost
@@ -33,11 +33,11 @@ To make sure we always use the latest version of this repo. We set up a playbook
 ~~~
 
 
-#### 3. Define who can access where
+### Define who can access where
 
 The next step is to setup the vars. Here we define, who should have access to all host by creating the vars section in `group_vars/all`: 
 
-~~~
+~~~yaml
 # group_vars/all
 ---
 ssh_root_users:
@@ -49,7 +49,7 @@ ssh_root_users:
 
 For webservers, we only give these 2 users access:
 
-~~~
+~~~yaml
 # group_vars/webservers
 ---
 ssh_root_users:
@@ -57,11 +57,11 @@ ssh_root_users:
   - key: "{{ lookup('file', './files/sshkeys/user2.pub') }}"
 ~~~
 
-#### 4. Play for authorized_key deployment
+### Play for authorized_key deployment
 
 Finally, we extend the playbook for the final deployment of authorized_key:
 
-~~~
+~~~yaml
 # filename: sshkeys.yml
 ---
 - hosts: localhost
@@ -78,7 +78,7 @@ Finally, we extend the playbook for the final deployment of authorized_key:
     with_items: ssh_root_users
 ~~~
 
-### Explanation
+## Explanation
 
 The easiest way is to have a single authorized_keys file and use the copy task, of course.
 
