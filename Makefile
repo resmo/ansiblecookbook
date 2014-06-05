@@ -6,10 +6,14 @@ publish: website pdf
 	rsync -avz --delete build/  ansiblecookbook.com:/var/www/ansiblecookbook.com/www/public
 pdf:
 	mkdir -p build/downloads
-	pandoc --template=mytemplate.tex \
-		--variable mainfont="Georgia" \
-		--variable sansfont="Bitstream Vera Sans" \
-		--variable monofont="Bitstream Vera Sans Mono" \
-		--variable fontsize=12pt \
-		--variable version="$$(date --universal --rfc-2822)" \
+	pandoc --latex-engine=xelatex --template=mytemplate.tex \
+		--variable mainfont="DejaVu Serif" \
+		--variable sansfont="DejaVu Sans" \
+		--variable monofont="DejaVu Sans Mono" \
+		--variable fontsize=11pt \
+		--variable version="$$(cat VERSION) - Licensed under CC BY-NC-SA 3.0 - $$(date --universal )" \
+		--variable author="René Moser" \
+		--variable title="Ansible Cookbook 2014" \
+		--variable date="$$(date --universal)" \
+		--highlight-style=zenburn \
 		--toc en/*/*.md -o build/downloads/ansiblecookbook.en.pdf
