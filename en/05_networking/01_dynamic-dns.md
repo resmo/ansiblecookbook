@@ -1,7 +1,7 @@
 \newpage
 
-## How do I add nodes to DNS?
+# How do I add nodes to DNS?
 
-### Solution
+## Solution
 
-### Explanation
+## Explanation

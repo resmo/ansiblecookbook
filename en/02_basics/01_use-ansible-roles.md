@@ -1,7 +1,7 @@
 \newpage
 
-## How do I use Ansible Roles?
+# How do I use Ansible Roles?
 
-### Solution
+## Solution
 
-### Explanation
+## Explanation

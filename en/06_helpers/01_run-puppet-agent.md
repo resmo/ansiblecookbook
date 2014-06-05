@@ -1,8 +1,8 @@
 \newpage
 
-## How do I run Puppet agent by Ansible?
+# How do I run Puppet agent by Ansible?
 
-### Solution
+## Solution
 
 Create a playbook having the following content:
 
@@ -19,7 +19,7 @@ Create a playbook having the following content:
       failed_when: puppet_result.rc == 1
 ~~~
 
-### Explanation
+## Explanation
 
 The playbook has target to all hosts, but of course you can limit it using `--limit` e.g.:
 

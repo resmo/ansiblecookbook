@@ -1,7 +1,7 @@
 \newpage
 
-## How do I test Ansible roles?
+# How do I test Ansible roles?
 
-### Solution
+## Solution
 
-### Explanation
+## Explanation

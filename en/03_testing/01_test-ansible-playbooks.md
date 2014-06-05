@@ -1,7 +1,7 @@
 \newpage
 
-## How do I test Ansible Playbooks locally?
+# How do I test Ansible Playbooks locally?
 
-### Solution
+## Solution
 
-### Explanation
+## Explanation
