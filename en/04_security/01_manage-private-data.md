@@ -2,11 +2,15 @@
 
 ## How do I store private data in git for Ansible?
 
+We assume, you use git to manage your ansible projects history. Even if you use a private git repo on [GitHub](https://github.com), you should have to trust GitHub, if you store sensible date in your ansible project.
+
+Below we show how you can handle it savely:
+
 ### Solution
 
 Requirements: [GnuPG](https://www.gnupg.org)
 
-#### 1. Create a password file for ansible-vault and add it to .gitignore.
+#### 1. Create a password file for ansible-vault and prevent it to be added to the git repo.
 
 ~~~
 $ pwgen 12 1 > vault-password.txt
@@ -48,7 +52,7 @@ $ ansible-playbook --vault-password-file vault-password.txt ...
 This alias will automatically decrypt the vault-password.txt.gpg if necessary and uses the encrypted file with option `--vault-password-file`:
 
 ~~~
-$ alias ansible-playbook-vault='test -e vault-password.txt || 
+$ alias ansible-playbook-vault='test -e vault-password.txt ||
 gpg --decrypt-files vault-password.txt.gpg;
 ansible-playbook --vault-password-file vault-password.txt $@'
 ~~~
@@ -63,4 +67,4 @@ That is why `ansible-playbook` has an other option for letting you write the pas
 
 But as you can guess, the password is stored in plain text in a file and we likely want this file to be in a public git repo.
 
-That is the part where asymetric cryptology and PGP comes into the game. PGP lets you encrypt any file without shareing a password, even for a group of people.
+This is the part where asymetric cryptology and GnuPG comes into the game. GnuPG lets you encrypt any file without shareing a password, even for a group of people.
