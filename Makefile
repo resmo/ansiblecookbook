@@ -2,7 +2,7 @@
 website:
 	pandoc -s -S -c style/pan-am.css README.md -o build/index.html
 	cp -r style images build/
-publish: website pdf
+publish: website pdf html
 	rsync -avz --delete build/  ansiblecookbook.com:/var/www/ansiblecookbook.com/www/public
 pdf:
 	mkdir -p build/downloads
@@ -17,3 +17,7 @@ pdf:
 		--variable date="$$(date --universal)" \
 		--highlight-style=zenburn \
 		--toc en/*/*.md -o build/downloads/ansiblecookbook.en.pdf
+html:
+	mkdir -p build/html
+	pandoc --toc -s -S -c style/style.css en/*/*.md -o build/html/en.html
+	cp -r style images build/html/

@@ -2,11 +2,18 @@
 
 
 ## About this book
-I always liked the style of a cookbook for best practice, frequently ask questions and special cases. This books should be a reference for how doing cool things with [Ansible](http://www.ansible.com), things you can not find in the official docs.
+
+This books should become a reference for how doing cool things in your daily business with [Ansible](http://www.ansible.com), things you can not find in the official docs.
+
+Note: This book is heavily in development.
+
+
+## Read online
+
+- English: <http://ansiblecookbook.com/html/en.html>
 
 
 ## Download
-Note: this book is heavily in development
 
 - PDF: <http://ansiblecookbook.com/downloads/ansiblecookbook.en.pdf>
 
