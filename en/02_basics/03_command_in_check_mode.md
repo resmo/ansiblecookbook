@@ -6,12 +6,14 @@
 
 Use `always_run: yes` in the task.
 
-    Example use case:
-        
-        # This tasks would be skippped without always_run
-        - name: check if vmware tools are installed
-          shell: rpm -qa | grep foo
-          always_run: yes
+Example use case:
+
+~~~yaml   
+# This tasks would be skippped without always_run
+- name: check if vmware tools are installed
+  shell: rpm -qa | grep foo
+  always_run: yes
+~~~
 
 ## Explanation
 
