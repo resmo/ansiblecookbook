@@ -6,6 +6,9 @@
 
 In a task:
 
+    ---
+    hosts: webservers
+    tasks: 
     - debug: msg="{{ item }}"
       with_items: groups.all
 
