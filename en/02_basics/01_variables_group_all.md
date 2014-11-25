@@ -6,23 +6,26 @@
 
 In a task:
 
-    ---
-    hosts: webservers
-    tasks: 
-    - debug: msg="{{ item }}"
-      with_items: groups.all
+~~~yaml
+- debug: msg="{{ item }}"
+  with_items: groups.all
+~~~
 
 In a template:
 
-    {% for host in groups['all'] %}
-      {{ host }}
-    {% endfor %}
-  
+~~~jinja
+{% for host in groups['all'] %}
+  {{ host }}
+{% endfor %}
+~~~
+
 Access host variables dynamically:
 
-    {% for host in groups['all'] %}
-      {{ hostvars[host]['your_varibable_name'] }}
-    {% endfor %}
+~~~jinja
+{% for host in groups['all'] %}
+  {{ hostvars[host]['your_varibable_name'] }}
+{% endfor %}
+~~~
 
 ## Explanation
 
