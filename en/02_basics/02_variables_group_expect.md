@@ -5,21 +5,24 @@
 ## Solution
 
 In a task:
-    
-    - hosts: webservers
-      tasks:
-      - debug: msg="{{ item }}"
-        with_items: groups.webservers
-        when: "item != inventory_hostname"
+
+~~~yaml
+- hosts: webservers
+  tasks:
+  - debug: msg="{{ item }}"
+    with_items: groups.webservers
+    when: "item != inventory_hostname"
+~~~
 
 In a template:
 
-    {% for host in groups['webservers'] %}
-      {% if host == inventory_hostname %}
-        {{ host }}
-      {% endif%}
-    {% endfor %}
-
+~~~jinja
+{% for host in groups['webservers'] %}
+  {% if host == inventory_hostname %}
+    {{ host }}
+  {% endif%}
+{% endfor %}
+~~~
 
 ## Explanation
 
