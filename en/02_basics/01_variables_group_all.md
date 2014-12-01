@@ -7,8 +7,8 @@
 In a task:
 
 ~~~yaml
-- debug: msg="{{ item }}"
-  with_items: groups.all
+- debug: msg="{{ item }} having var {{ hostvars[item]['your_varibable_name'] }}"
+  with_items: groups['all']
 ~~~
 
 In a template:
