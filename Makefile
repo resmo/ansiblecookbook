@@ -1,5 +1,6 @@
 
 website:
+	mkdir -p build
 	pandoc -s -S -c style/pan-am.css README.md -o build/index.html
 	cp -r style images build/
 publish: website pdf html
